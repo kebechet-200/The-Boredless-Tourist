@@ -47,6 +47,20 @@ def find_attaction(destination,interests):
 
         for i in interests:
             if i in attactions_tags:
-                attactions_with_interest.append(possible_attaction)
+                attactions_with_interest.append(possible_attaction[0])
 
     return attactions_with_interest
+
+def get_attactions_for_traveler(traveler):
+    traveler_destination = traveler[1]
+    traveler_interests = traveler[2]
+
+    traveler_attractions = find_attaction(traveler_destination,traveler_interests)
+
+    interests_string = f"Hi {traveler[0]}, we think you'll like these places around: "
+
+    for i in traveler_attractions:
+        interests_string += f"{i}. "
+        
+smills_france = get_attactions_for_traveler(["Dereck Smill", "Paris, France", ['monument']])
+print(smills_france)
