@@ -23,6 +23,7 @@ def add_attraction(destination,attraction):
         return
 
 add_attraction("Los Angeles, USA", ["Venice Beach", ["beach"]])
+
 add_attraction("Paris, France", ["the Louvre", ["art", "museum"]])
 add_attraction("Paris, France", ["Arc de Triomphe", ["historical site", "monument"]])
 add_attraction("Shanghai, China", ["Yu Garden", ["garden", "historcical site"]])
@@ -33,3 +34,19 @@ add_attraction("São Paulo, Brazil", ["São Paulo Zoo", ["zoo"]])
 add_attraction("São Paulo, Brazil", ["Pátio do Colégio", ["historical site"]])
 add_attraction("Cairo, Egypt", ["Pyramids of Giza", ["monument", "historical site"]])
 add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
+
+
+def find_attaction(destination,interests):
+    destination_index = get_destination_index(destination)
+    attactions_in_city = attractions[destination_index]
+    attactions_with_interest = []
+
+    for i in attactions_in_city:
+        possible_attaction = i
+        attactions_tags = i[1]
+
+        for i in interests:
+            if i in attactions_tags:
+                attactions_with_interest.append(possible_attaction)
+
+    return attactions_with_interest
